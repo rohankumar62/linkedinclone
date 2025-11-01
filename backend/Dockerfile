@@ -9,8 +9,10 @@ COPY pom.xml ./
 RUN mvn -B dependency:go-offline
 
 # copy source and build
-COPY src ./src
+COPY src /app/src
 RUN mvn -B -DskipTests package
+
+
 
 # Run stage: lightweight JRE image
 FROM eclipse-temurin:17-jre
