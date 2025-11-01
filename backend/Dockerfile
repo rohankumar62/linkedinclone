@@ -19,6 +19,9 @@ WORKDIR /app
 # Copy the jar produced in the build stage. Adjust the pattern if your artifactId/version differs.
 COPY --from=build /build/target/*.jar ./app.jar
 
+# Expose default port; Render will provide $PORT at runtime
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+# Use the PORT environment variable if provided by the platform (Render sets $PORT).
+# Use a shell entrypoint so we can pass the server.port system property dynamically.
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar /app/app.jar"]
