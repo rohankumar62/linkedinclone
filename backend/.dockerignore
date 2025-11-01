@@ -1,0 +1,10 @@
+target/
+.mvn/
+.idea/
+.classpath
+.project
+out/
+logs/
+*.log
+uploads/
+*.jar
