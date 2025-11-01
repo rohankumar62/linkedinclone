@@ -17,6 +17,7 @@ const PrivateRoute = ({ children }) => {
 
 function App() {
   return (
+    <>
     <AuthProvider>
       <BrowserRouter>
         <Routes>
@@ -42,6 +43,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    </>
   );
 }
 
